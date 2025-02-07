@@ -1,3 +1,9 @@
+/**
+ * Nikola's Corner - Shop Page Functionality
+ * Copyright (c) 2024 Nikola's Corner
+ * Licensed under MIT License - see LICENSE file for details
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get all filter buttons and product cards
     const filterButtons = document.querySelectorAll('[data-filter]');

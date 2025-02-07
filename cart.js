@@ -1,3 +1,9 @@
+/**
+ * Nikola's Corner - Shopping Cart Functionality
+ * Copyright (c) 2024 Nikola's Corner
+ * Licensed under MIT License - see LICENSE file for details
+ */
+
 // Cart state
 let cart = [];
 

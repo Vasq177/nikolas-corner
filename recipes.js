@@ -1,3 +1,9 @@
+/**
+ * Nikola's Corner - Recipes Page Functionality
+ * Copyright (c) 2024 Nikola's Corner
+ * Licensed under MIT License - see LICENSE file for details
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get all filter buttons and recipe cards
     const filterButtons = document.querySelectorAll('[data-filter]');

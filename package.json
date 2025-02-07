@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "tailwindcss -i ./input.css -o ./dist/output.css --watch"
+    "dev": "tailwindcss -i ./input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./input.css -o ./dist/output.css"
   },
   "name": "pekara-template",
   "version": "1.0.0",

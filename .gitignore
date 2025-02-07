@@ -2,7 +2,7 @@
 node_modules/
 
 # Build output
-dist/
+# dist/    # Comment this out or remove it
 
 # Environment files
 .env
