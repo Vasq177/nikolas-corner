@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Nikola's Corner</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-base-100">
+    <!-- Navigation -->
+    <nav class="navbar bg-base-100 fixed top-0 z-50 shadow-md">
+        <div class="container mx-auto max-w-6xl px-4">
+            <!-- Logo and Brand -->
+            <div class="flex-1">
+                <a href="index.html" class="text-2xl font-serif font-bold">
+                    <span class="text-primary">Nikola's</span> Corner
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="flex-none hidden lg:block">
+                <ul class="menu menu-horizontal px-1 gap-2">
+                    <li><a href="index.html#about" class="font-medium">About</a></li>
+                    <li><a href="recipes.html" class="font-medium">Recipes</a></li>
+                    <li><a href="index.html#testimonials" class="font-medium">Testimonials</a></li>
+                    <li><a href="index.html#contact" class="font-medium">Contact</a></li>
+                    <li>
+                        <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="flex-none lg:hidden">
+                <label for="mobile-menu" class="btn btn-square btn-ghost" aria-label="Open Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="drawer drawer-end">
+        <input id="mobile-menu" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-side fixed z-50">
+            <label for="mobile-menu" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                <li class="mb-2"><a href="index.html" class="font-medium text-lg">Home</a></li>
+                <li class="mb-2"><a href="index.html#about" class="font-medium text-lg">About</a></li>
+                <li class="mb-2"><a href="recipes.html" class="font-medium text-lg">Recipes</a></li>
+                <li class="mb-2"><a href="index.html#testimonials" class="font-medium text-lg">Testimonials</a></li>
+                <li class="mb-2"><a href="index.html#contact" class="font-medium text-lg">Contact</a></li>
+                <li class="mt-4">
+                    <a href="shop.html" class="btn btn-primary w-full">Shop Now</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-6xl px-4 pt-24 pb-16">
+        <!-- Page Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-serif font-bold mb-4">Our Recipes</h1>
+            <p class="text-lg max-w-2xl mx-auto">Discover our collection of beloved recipes, carefully crafted and tested in our bakery.</p>
+        </div>
+
+        <!-- Recipe Categories -->
+        <div class="flex flex-wrap gap-4 justify-center mb-12">
+            <button class="btn btn-primary" data-filter="all">All Recipes</button>
+            <button class="btn btn-outline" data-filter="bread">Breads</button>
+            <button class="btn btn-outline" data-filter="pastry">Pastries</button>
+            <button class="btn btn-outline" data-filter="cake">Cakes</button>
+            <button class="btn btn-outline" data-filter="seasonal">Seasonal</button>
+        </div>
+
+        <!-- Add this after the filter buttons -->
+        <div class="flex justify-end mb-8">
+            <select id="sort-select" class="select select-bordered w-full max-w-xs">
+                <option value="default">Sort by</option>
+                <option value="alphabetical">A to Z</option>
+                <option value="alphabetical-reverse">Z to A</option>
+                <option value="difficulty-asc">Easiest First</option>
+                <option value="difficulty-desc">Hardest First</option>
+            </select>
+        </div>
+
+        <!-- Recipe Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 recipe-grid">
+            <!-- Classic Sourdough Recipe -->
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all" data-category="bread">
+                <figure class="px-4 pt-4">
+                    <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df" alt="Sourdough Bread" class="rounded-xl h-64 w-full object-cover" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title font-serif">Classic Sourdough Bread</h2>
+                    <div class="flex gap-2 flex-wrap mb-2">
+                        <div class="badge badge-outline">4-6 hours</div>
+                        <div class="badge badge-outline">Advanced</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold mb-2">Ingredients:</h3>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li>500g bread flour</li>
+                                <li>350g water</li>
+                                <li>100g active sourdough starter</li>
+                                <li>10g salt</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2">
+                            <button class="btn btn-primary btn-block" onclick="document.getElementById('recipe-modal-1').showModal()">View Full Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- French Croissants Recipe -->
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all" data-category="pastry">
+                <figure class="px-4 pt-4">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a" alt="French Croissants" class="rounded-xl h-64 w-full object-cover" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title font-serif">French Croissants</h2>
+                    <div class="flex gap-2 flex-wrap mb-2">
+                        <div class="badge badge-outline">12-14 hours</div>
+                        <div class="badge badge-outline">Expert</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold mb-2">Ingredients:</h3>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li>500g all-purpose flour</li>
+                                <li>250g European-style butter</li>
+                                <li>60g sugar</li>
+                                <li>10g salt</li>
+                                <li>7g active dry yeast</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2">
+                            <button class="btn btn-primary btn-block" onclick="document.getElementById('recipe-modal-2').showModal()">View Full Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cinnamon Rolls Recipe -->
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all" data-category="pastry">
+                <figure class="px-4 pt-4">
+                    <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812" alt="Cinnamon Rolls" class="rounded-xl h-64 w-full object-cover" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title font-serif">Cinnamon Rolls</h2>
+                    <div class="flex gap-2 flex-wrap mb-2">
+                        <div class="badge badge-outline">3-4 hours</div>
+                        <div class="badge badge-outline">Intermediate</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold mb-2">Ingredients:</h3>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li>400g all-purpose flour</li>
+                                <li>200ml warm milk</li>
+                                <li>50g butter</li>
+                                <li>100g brown sugar</li>
+                                <li>2 tbsp cinnamon</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2">
+                            <button class="btn btn-primary btn-block" onclick="document.getElementById('recipe-modal-3').showModal()">View Full Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chocolate Cake Recipe -->
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all" data-category="cake">
+                <figure class="px-4 pt-4">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Chocolate Cake" class="rounded-xl h-64 w-full object-cover" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title font-serif">Rich Chocolate Cake</h2>
+                    <div class="flex gap-2 flex-wrap mb-2">
+                        <div class="badge badge-outline">2-3 hours</div>
+                        <div class="badge badge-outline">Intermediate</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold mb-2">Ingredients:</h3>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li>250g all-purpose flour</li>
+                                <li>350g sugar</li>
+                                <li>75g cocoa powder</li>
+                                <li>2 eggs</li>
+                                <li>250ml milk</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2">
+                            <button class="btn btn-primary btn-block" onclick="document.getElementById('recipe-modal-4').showModal()">View Full Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Berry Tart Recipe -->
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all" data-category="seasonal">
+                <figure class="px-4 pt-4">
+                    <img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81" alt="Berry Tart" class="rounded-xl h-64 w-full object-cover" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title font-serif">Fresh Berry Tart</h2>
+                    <div class="flex gap-2 flex-wrap mb-2">
+                        <div class="badge badge-outline">1-2 hours</div>
+                        <div class="badge badge-outline">Advanced</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold mb-2">Ingredients:</h3>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li>200g pastry flour</li>
+                                <li>100g butter</li>
+                                <li>500g mixed berries</li>
+                                <li>Vanilla custard</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2">
+                            <button class="btn btn-primary btn-block" onclick="document.getElementById('recipe-modal-5').showModal()">View Full Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe Modals -->
+        <!-- Sourdough Modal -->
+        <dialog id="recipe-modal-1" class="modal">
+            <div class="modal-box max-w-3xl">
+                <h3 class="font-bold text-2xl font-serif mb-4">Classic Sourdough Bread Recipe</h3>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Ingredients:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>500g bread flour</li>
+                            <li>350g water (room temperature)</li>
+                            <li>100g active sourdough starter</li>
+                            <li>10g salt</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Instructions:</h4>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li>Mix flour and water, let autolyse for 30 minutes</li>
+                            <li>Add starter and salt, mix until well combined</li>
+                            <li>Perform 4 sets of stretch and folds over 2 hours</li>
+                            <li>Bulk ferment for 4-6 hours at room temperature</li>
+                            <li>Shape and place in banneton</li>
+                            <li>Cold proof overnight (8-12 hours)</li>
+                            <li>Bake at 450°F (230°C) in a Dutch oven</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Tips:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Ensure your starter is at peak activity</li>
+                            <li>Maintain dough temperature around 76°F (24°C)</li>
+                            <li>Look for 30-50% volume increase during bulk ferment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Croissants Modal -->
+        <dialog id="recipe-modal-2" class="modal">
+            <div class="modal-box max-w-3xl">
+                <!-- Similar structure to sourdough modal but with croissant recipe -->
+                <h3 class="font-bold text-2xl font-serif mb-4">French Croissants Recipe</h3>
+                <!-- Add detailed recipe content here -->
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Cinnamon Rolls Modal -->
+        <dialog id="recipe-modal-3" class="modal">
+            <div class="modal-box max-w-3xl">
+                <!-- Similar structure to sourdough modal but with cinnamon rolls recipe -->
+                <h3 class="font-bold text-2xl font-serif mb-4">Cinnamon Rolls Recipe</h3>
+                <!-- Add detailed recipe content here -->
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Chocolate Cake Modal -->
+        <dialog id="recipe-modal-4" class="modal">
+            <div class="modal-box max-w-3xl">
+                <h3 class="font-bold text-2xl font-serif mb-4">Rich Chocolate Cake Recipe</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="badge badge-outline">Prep Time: 30 mins</div>
+                        <div class="badge badge-outline">Cook Time: 45 mins</div>
+                        <div class="badge badge-outline">Total Time: 2 hrs</div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Ingredients:</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-semibold mb-1">For the Cake:</h5>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>250g all-purpose flour</li>
+                                    <li>350g granulated sugar</li>
+                                    <li>75g unsweetened cocoa powder</li>
+                                    <li>2 large eggs</li>
+                                    <li>250ml whole milk</li>
+                                    <li>120ml vegetable oil</li>
+                                    <li>2 tsp vanilla extract</li>
+                                    <li>2 tsp baking powder</li>
+                                    <li>1½ tsp baking soda</li>
+                                    <li>1 tsp salt</li>
+                                    <li>250ml hot coffee</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-1">For the Ganache:</h5>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>200g dark chocolate, chopped</li>
+                                    <li>200ml heavy cream</li>
+                                    <li>Pinch of salt</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Instructions:</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold mb-1">Cake:</h5>
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li>Preheat oven to 350°F (175°C). Grease and line two 9-inch cake pans.</li>
+                                    <li>Sift together flour, cocoa, baking powder, baking soda, and salt.</li>
+                                    <li>In a large bowl, beat eggs, sugar, and oil until pale and fluffy.</li>
+                                    <li>Alternately add dry ingredients and milk to the egg mixture.</li>
+                                    <li>Stir in hot coffee until smooth.</li>
+                                    <li>Divide batter between pans and bake for 30-35 minutes.</li>
+                                    <li>Cool in pans for 10 minutes, then turn out onto racks.</li>
+                                </ol>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-1">Ganache:</h5>
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li>Heat cream until just simmering.</li>
+                                    <li>Pour over chopped chocolate and let stand 5 minutes.</li>
+                                    <li>Stir until smooth and glossy.</li>
+                                    <li>Let cool until spreadable.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Tips:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Room temperature ingredients will give best results</li>
+                            <li>Don't overmix the batter after adding flour</li>
+                            <li>The hot coffee enhances chocolate flavor but won't make the cake taste like coffee</li>
+                            <li>Cake can be made ahead and frozen for up to 2 months</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Storage:</h4>
+                        <p>Store covered at room temperature for up to 4 days, or refrigerated for up to a week.</p>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Berry Tart Modal -->
+        <dialog id="recipe-modal-5" class="modal">
+            <div class="modal-box max-w-3xl">
+                <h3 class="font-bold text-2xl font-serif mb-4">Fresh Berry Tart Recipe</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="badge badge-outline">Prep Time: 45 mins</div>
+                        <div class="badge badge-outline">Chill Time: 2 hrs</div>
+                        <div class="badge badge-outline">Total Time: 3 hrs</div>
+                    </div>
+                    
+                    <!-- Similar detailed structure as chocolate cake modal -->
+                    <!-- Add detailed ingredients, instructions, tips -->
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-base-300 text-base-content">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="footer py-4">
+                <p>© 2024 Nikola's Corner. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add JavaScript before closing body tag -->
+    <script src="recipes.js"></script>
+</body>
+</html> 
